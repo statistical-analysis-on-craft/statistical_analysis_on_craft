@@ -1,0 +1,281 @@
+This is the 1 experiment
+Key: 8cd603c2159211eedfffc06171ed1987
+The actual value of Key[1][12] is : 1
+
+The value of counter :
+The counter corresponding to the guessed key value - 1 : Get 11 correct pairs
+The counter corresponding to the guessed key value - b : Get 12 correct pairs
+This is the 2 experiment
+Key: a6c7b2bb70def2eaabc4bc5f1da5b35c
+The actual value of Key[1][12] is : b
+
+The value of counter :
+The counter corresponding to the guessed key value - b : Get 11 correct pairs
+The counter corresponding to the guessed key value - 1 : Get 12 correct pairs
+This is the 3 experiment
+Key: 7db7b4decdf63131fff468eaa5fd7395
+The actual value of Key[1][12] is : 7
+
+The value of counter :
+The counter corresponding to the guessed key value - 7 : Get a correct pairs
+The counter corresponding to the guessed key value - d : Get b correct pairs
+This is the 4 experiment
+Key: 58a76a39baa484fc374c4fb8eac1a9fa
+The actual value of Key[1][12] is : a
+
+The value of counter :
+The counter corresponding to the guessed key value - a : Get b correct pairs
+The counter corresponding to the guessed key value - 0 : Get 10 correct pairs
+This is the 5 experiment
+Key: b8975aaf4f0933fa91c38c868ae054f0
+The actual value of Key[1][12] is : 5
+
+The value of counter :
+The counter corresponding to the guessed key value - 5 : Get b correct pairs
+The counter corresponding to the guessed key value - f : Get 8 correct pairs
+This is the 6 experiment
+Key: 7b1a2762f2de4d92fa9bf35344d21919
+The actual value of Key[1][12] is : 1
+
+The value of counter :
+The counter corresponding to the guessed key value - 1 : Get b correct pairs
+The counter corresponding to the guessed key value - b : Get a correct pairs
+This is the 7 experiment
+Key: 5ae50ecf0ab4713c68c5140ed868c1c6
+The actual value of Key[1][12] is : c
+
+The value of counter :
+The counter corresponding to the guessed key value - c : Get 18 correct pairs
+The counter corresponding to the guessed key value - 6 : Get d correct pairs
+This is the 8 experiment
+Key: 4c4ddf3dfbbf2fcc5a2487640e1a6835
+The actual value of Key[1][12] is : 6
+
+The value of counter :
+The counter corresponding to the guessed key value - 6 : Get 14 correct pairs
+The counter corresponding to the guessed key value - c : Get 13 correct pairs
+This is the 9 experiment
+Key: 2a32bd21587b1d4c3249780bccad3d33
+The actual value of Key[1][12] is : 3
+
+The value of counter :
+The counter corresponding to the guessed key value - 3 : Get f correct pairs
+The counter corresponding to the guessed key value - 9 : Get 10 correct pairs
+This is the a experiment
+Key: 45754302a3b0e5cef23119e5e35d109b
+The actual value of Key[1][12] is : 1
+
+The value of counter :
+The counter corresponding to the guessed key value - 1 : Get f correct pairs
+The counter corresponding to the guessed key value - b : Get f correct pairs
+This is the b experiment
+Key: a7f5296f305403314c571b750060694b
+The actual value of Key[1][12] is : 6
+
+The value of counter :
+The counter corresponding to the guessed key value - 6 : Get f correct pairs
+The counter corresponding to the guessed key value - c : Get e correct pairs
+This is the c experiment
+Key: f523bf184799f64fb91488e580e69970
+The actual value of Key[1][12] is : 9
+
+The value of counter :
+The counter corresponding to the guessed key value - 9 : Get 12 correct pairs
+The counter corresponding to the guessed key value - 3 : Get f correct pairs
+This is the d experiment
+Key: 15e29077a21eb0f0e7b42b231bfd8833
+The actual value of Key[1][12] is : 8
+
+The value of counter :
+The counter corresponding to the guessed key value - 8 : Get f correct pairs
+The counter corresponding to the guessed key value - 2 : Get b correct pairs
+This is the e experiment
+Key: 094ec27256b3d01e5b98eaaf49819af0
+The actual value of Key[1][12] is : 9
+
+The value of counter :
+The counter corresponding to the guessed key value - 9 : Get 10 correct pairs
+The counter corresponding to the guessed key value - 3 : Get 16 correct pairs
+This is the f experiment
+Key: f1638365ce44e72822681a9a4861cd53
+The actual value of Key[1][12] is : c
+
+The value of counter :
+The counter corresponding to the guessed key value - c : Get 12 correct pairs
+The counter corresponding to the guessed key value - 6 : Get f correct pairs
+This is the 10 experiment
+Key: cd666f3e16aa34e6501234e2707da7ba
+The actual value of Key[1][12] is : a
+
+The value of counter :
+The counter corresponding to the guessed key value - a : Get b correct pairs
+The counter corresponding to the guessed key value - 0 : Get 8 correct pairs
+This is the 11 experiment
+Key: 556af54b17868fa64e82b4e15fb7de58
+The actual value of Key[1][12] is : d
+
+The value of counter :
+The counter corresponding to the guessed key value - d : Get 9 correct pairs
+The counter corresponding to the guessed key value - 7 : Get d correct pairs
+This is the 12 experiment
+Key: cf1c527fd93db4e57412bb4e1ba84e6e
+The actual value of Key[1][12] is : 4
+
+The value of counter :
+The counter corresponding to the guessed key value - 4 : Get 9 correct pairs
+The counter corresponding to the guessed key value - e : Get 11 correct pairs
+This is the 13 experiment
+Key: ecba4553117ffea77df7738b9c1d4fb2
+The actual value of Key[1][12] is : 4
+
+The value of counter :
+The counter corresponding to the guessed key value - 4 : Get 10 correct pairs
+The counter corresponding to the guessed key value - e : Get 10 correct pairs
+This is the 14 experiment
+Key: 8fd3aadae1e86f78fe32e8ef52bdd266
+The actual value of Key[1][12] is : d
+
+The value of counter :
+The counter corresponding to the guessed key value - d : Get a correct pairs
+The counter corresponding to the guessed key value - 7 : Get 7 correct pairs
+This is the 15 experiment
+Key: ad540c43a6cfa0edbeb7f5eadb3a0ca3
+The actual value of Key[1][12] is : 0
+
+The value of counter :
+The counter corresponding to the guessed key value - 0 : Get e correct pairs
+The counter corresponding to the guessed key value - a : Get 10 correct pairs
+This is the 16 experiment
+Key: 762414d6f93e07ae6b67470a80bb2c07
+The actual value of Key[1][12] is : 2
+
+The value of counter :
+The counter corresponding to the guessed key value - 2 : Get 16 correct pairs
+The counter corresponding to the guessed key value - 8 : Get 10 correct pairs
+This is the 17 experiment
+Key: 3a0b90a7f51f599d5e2cd42939ae2a25
+The actual value of Key[1][12] is : 2
+
+The value of counter :
+The counter corresponding to the guessed key value - 2 : Get f correct pairs
+The counter corresponding to the guessed key value - 8 : Get 10 correct pairs
+This is the 18 experiment
+Key: 2cd6ccaed676cc9a02c322b9e3d03b99
+The actual value of Key[1][12] is : 3
+
+The value of counter :
+The counter corresponding to the guessed key value - 3 : Get 13 correct pairs
+The counter corresponding to the guessed key value - 9 : Get f correct pairs
+This is the 19 experiment
+Key: ffb18e3181c10eb0b352059ed7215a47
+The actual value of Key[1][12] is : 5
+
+The value of counter :
+The counter corresponding to the guessed key value - 5 : Get e correct pairs
+The counter corresponding to the guessed key value - f : Get b correct pairs
+This is the 1a experiment
+Key: 1500fd0d25a907071330a254ebfc401d
+The actual value of Key[1][12] is : 4
+
+The value of counter :
+The counter corresponding to the guessed key value - 4 : Get 14 correct pairs
+The counter corresponding to the guessed key value - e : Get 9 correct pairs
+This is the 1b experiment
+Key: afb75e83da484a828ca98d5960394541
+The actual value of Key[1][12] is : 4
+
+The value of counter :
+The counter corresponding to the guessed key value - 4 : Get 11 correct pairs
+The counter corresponding to the guessed key value - e : Get 12 correct pairs
+This is the 1c experiment
+Key: 5fff313dafa44989cfc844f1909ba554
+The actual value of Key[1][12] is : a
+
+The value of counter :
+The counter corresponding to the guessed key value - a : Get a correct pairs
+The counter corresponding to the guessed key value - 0 : Get 11 correct pairs
+This is the 1d experiment
+Key: f1c4f0b929987cbabec6fbaa68ac474d
+The actual value of Key[1][12] is : 4
+
+The value of counter :
+The counter corresponding to the guessed key value - 4 : Get e correct pairs
+The counter corresponding to the guessed key value - e : Get f correct pairs
+This is the 1e experiment
+Key: 3cd97563b82d40e0e471a9a7689237a9
+The actual value of Key[1][12] is : 3
+
+The value of counter :
+The counter corresponding to the guessed key value - 3 : Get d correct pairs
+The counter corresponding to the guessed key value - 9 : Get f correct pairs
+This is the 1f experiment
+Key: e74b6f6585d476e3faefd9d36fad4bfc
+The actual value of Key[1][12] is : 4
+
+The value of counter :
+The counter corresponding to the guessed key value - 4 : Get 10 correct pairs
+The counter corresponding to the guessed key value - e : Get e correct pairs
+This is the 20 experiment
+Key: ac15f33a2c2230d5c0ed6c75b9c5457c
+The actual value of Key[1][12] is : 4
+
+The value of counter :
+The counter corresponding to the guessed key value - 4 : Get f correct pairs
+The counter corresponding to the guessed key value - e : Get d correct pairs
+T1  9 a b c d e f 10 11 12 13 14 
+sum2  2   3   4   0   1   3   6   3   3   2   1   2   
+---------------------------------------------------------------
+
+T2  9 a b c d e f 10 11 12 13 14 
+sum2  1   1   3   0   3   2   6   6   2   3   1   0   
+---------------------------------------------------------------
+
+T1  9 a b c d e f 10 11 12 13 14 
+PS1  1   1.5   2   0   0.5   1.5   3   1.5   1.5   1   0.5   1   
+---------------------------------------------------------------
+
+T2  9 a b c d e f 10 11 12 13 14 
+PS2  0.5   0.5   1.5   0   1.5   1   3   3   1   1.5   0.5   0   
+
+T 9 a b c d e f 10 11 12 13 14 
+9 0  0  0  0  1  0  0  0  1  0  0  0  
+a 0  0  1  0  0  0  0  0  1  0  0  0  
+b 0  1  0  0  0  0  0  1  0  0  0  0  
+c 0  0  0  0  0  0  0  0  0  0  0  0  
+d 0  0  0  0  0  0  1  0  0  0  0  0  
+e 0  0  1  0  0  0  1  1  0  0  0  0  
+f 0  0  1  0  1  1  1  2  0  0  0  0  
+10 0  0  0  0  0  1  0  1  0  0  0  0  
+11 0  0  0  0  0  0  0  0  0  3  0  0  
+12 0  0  0  0  0  0  2  0  0  0  0  0  
+13 0  0  0  0  0  0  1  0  0  0  0  0  
+14 1  0  0  0  0  0  0  0  0  0  1  0  
+---------------------------------------------------------------
+T 9 a b c d e f 10 11 12 13 14 
+9 0  0  0  0  0.5  0  0  0  0.5  0  0  0  
+a 0  0  0.5  0  0  0  0  0  0.5  0  0  0  
+b 0  0.5  0  0  0  0  0  0.5  0  0  0  0  
+c 0  0  0  0  0  0  0  0  0  0  0  0  
+d 0  0  0  0  0  0  0.5  0  0  0  0  0  
+e 0  0  0.5  0  0  0  0.5  0.5  0  0  0  0  
+f 0  0  0.5  0  0.5  0.5  0.5  1  0  0  0  0  
+10 0  0  0  0  0  0.5  0  0.5  0  0  0  0  
+11 0  0  0  0  0  0  0  0  0  1.5  0  0  
+12 0  0  0  0  0  0  1  0  0  0  0  0  
+13 0  0  0  0  0  0  0.5  0  0  0  0  0  
+14 0.5  0  0  0  0  0  0  0  0  0  0.5  0  
+---------------------------------------------------------------
+
+T 9 a b c d e f 10 11 12 13 14 
+9 0.5  0.5  1.5  0  1.5  1  3  3  1  1.5  0.5  0  
+a 0.75  0.75  2.25  0  2.25  1.5  4.5  4.5  1.5  2.25  0.75  0  
+b 1  1  3  0  3  2  6  6  2  3  1  0  
+c 0  0  0  0  0  0  0  0  0  0  0  0  
+d 0.25  0.25  0.75  0  0.75  0.5  1.5  1.5  0.5  0.75  0.25  0  
+e 0.75  0.75  2.25  0  2.25  1.5  4.5  4.5  1.5  2.25  0.75  0  
+f 1.5  1.5  4.5  0  4.5  3  9  9  3  4.5  1.5  0  
+10 0.75  0.75  2.25  0  2.25  1.5  4.5  4.5  1.5  2.25  0.75  0  
+11 0.75  0.75  2.25  0  2.25  1.5  4.5  4.5  1.5  2.25  0.75  0  
+12 0.5  0.5  1.5  0  1.5  1  3  3  1  1.5  0.5  0  
+13 0.25  0.25  0.75  0  0.75  0.5  1.5  1.5  0.5  0.75  0.25  0  
+14 0.5  0.5  1.5  0  1.5  1  3  3  1  1.5  0.5  0  
