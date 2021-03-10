@@ -1,0 +1,11 @@
+clear;
+N = 2^22;
+F=@(x)((exp(-(x-N.*2.^(-17)).^2./(N.*2.^(-16))))./(sqrt(N.*pi.*2.^(-16))));
+P=1-(integral(F,0,2.0952e-04));
+Q=1-(integral(F,0,16));
+O=1-(integral(F,0,24));
+R=1-(integral(F,0,32));
+fprintf('P = %d\n',P); 
+fprintf('Q = %d\n',Q);
+fprintf('O = %d\n',O);
+fprintf('R = %d\n',R);
