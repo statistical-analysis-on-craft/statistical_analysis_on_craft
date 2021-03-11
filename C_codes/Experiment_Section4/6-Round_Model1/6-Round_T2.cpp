@@ -92,9 +92,6 @@ int Last_round(int Stt[16], int r)
 	return 0;
 }
 
-
-
-
 int Test_Condition_ciphertext(int C0[16], int C1[16])
 {
     for (int i = 0; i < 16; i++)
@@ -163,11 +160,11 @@ int main()
 			for (double data = 0; data < d; data++)
 			{
 				for (int i = 0; i < 16; i++)
-					P0[i] = mt_rand()%16;
+					P0[i] = mt_rand() % 16;
 				for (int i = 0; i < 16; i++)
 					P1[i] = P0[i] ^ Diff[i];
 				for (int i = 0; i < 16; i++)
-                                       Tweak[i] = mt_rand()%16;
+                                       Tweak[i] = mt_rand() % 16;
 				Tweak[6] = guess; Tweak[12] = guess;
 				Initialize_key(Key, Tweak);
 				for (int r = 0; r < R0; r++)
@@ -189,7 +186,7 @@ int main()
 	N = counter[Key[1][12]^0xa];
 	cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
                         << "Get " <<M<< " correct pairs"  <<  endl;
-	cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
+	cout << "The counter corresponding to the guessed key value - " << (Key[1][12] ^ 0xa) <<" : "
                         << "Get " << N << " correct pairs"  <<  endl;
 	if(M >= T2 || N >= T2)
 	{
@@ -197,8 +194,8 @@ int main()
 	}
 	cout << "sum: " << sum << endl;
 }
-	PS = float(sum)/float(100);
-	int log_d = log(d)/log(2);
+	PS = float(sum) / float(100);
+	int log_d = log(d) / log(2);
 	cout << "When data complexity N=2^" << log_d << " and the threshold T=" << T2
                 << ",   Get success probability is: " << PS << endl;
 	cout << "---------------------------------------------------------------"<< endl;
