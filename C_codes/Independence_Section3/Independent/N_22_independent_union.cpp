@@ -102,8 +102,8 @@ int Test_Condition_ciphertext(int C0[16], int C1[16])
 
      if (Diff_Out[ 0] == 0x0 && Diff_Out[ 1] == 0xa && Diff_Out[ 2] == 0x0 && Diff_Out[ 3] == 0x0 &&
          Diff_Out[ 4] == 0x0 && Diff_Out[ 5] == 0x0 && Diff_Out[ 7] == 0x0 && Diff_Out[ 8] == 0x0 && 
-		 Diff_Out[ 9] == 0x0 && Diff_Out[11] == 0x0 && Diff_Out[12] == 0x0 && Diff_Out[13] == 0x0 && 
-		 Diff_Out[15] == 0x0)
+	 Diff_Out[ 9] == 0x0 && Diff_Out[11] == 0x0 && Diff_Out[12] == 0x0 && Diff_Out[13] == 0x0 && 
+	 Diff_Out[15] == 0x0)
      {
           return 1;
      }
