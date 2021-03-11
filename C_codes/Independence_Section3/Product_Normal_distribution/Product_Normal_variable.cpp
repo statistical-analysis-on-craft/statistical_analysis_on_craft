@@ -125,19 +125,15 @@ int main()
     int sum_mean = 0;
     int sum_variance = 0;
     double mean, variance;
-    int Diff[16] =
-    {
-        0x0, 0xa, 0x0, 0x0,
-        0x0, 0x0, 0x0, 0x0,
-        0x0, 0x0, 0xa, 0x0,
-        0x0, 0x0, 0xa, 0x0
-    };
-
+    int Diff[16] = {       
+	    0x0, 0xa, 0x0, 0x0,
+            0x0, 0x0, 0x0, 0x0,
+            0x0, 0x0, 0xa, 0x0,
+            0x0, 0x0, 0xa, 0x0};
+	
     int R0 = 6;              /* Number of rounds */
     double d = pow(2, 22);  /* Number of pairs */
-
     mt19937_64 mt_rand(time(0));
-
    for (int ex = 0; ex < 1000; ex++)
     {
 	outfile << "This is the "<<ex+1<<" experiment" << endl;
@@ -153,7 +149,6 @@ int main()
         {
             Key[1][i] = mt_rand()%16;
         }
-
         outfile << endl;
         outfile << endl;
         for(int guess = 0; guess < 16; guess++)
@@ -161,13 +156,13 @@ int main()
             for (double data = 0; data < d; data++)
             {
                  for (int i = 0; i < 16; i++)
-                      P0[i] = mt_rand()%16;
+                      P0[i] = mt_rand() % 16;
 
                  for (int i = 0; i < 16; i++)
                       P1[i] = P0[i] ^ Diff[i];
 
                  for (int i = 0; i < 16; i++)
-                     Tweak[i] = mt_rand()%16;
+                     Tweak[i] = mt_rand() % 16;
 
                  Tweak[6] = guess; Tweak[12] = guess;
 
@@ -189,48 +184,45 @@ int main()
 	   M = counter[Key[1][12]];
 	   N = counter[Key[1][12]^0xa];
 	   outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                    << "Get " <<M<< " correct pairs"  <<  endl;
+                   << "Get " << M << " correct pairs"  <<  endl;
 	   outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
-                    << "Get " <<N<< " correct pairs"  <<  endl;
+                   << "Get " << N << " correct pairs"  <<  endl;
 	   cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                    << "Get " <<M<< " correct pairs"  <<  endl;
+                << "Get " << M << " correct pairs"  <<  endl;
 	   cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
-                    << "Get " <<N<< " correct pairs"  <<  endl;
+                << "Get " << N << " correct pairs"  <<  endl;
 	   cout << endl;
 	   X[ex] = M-16;
 	   Y[ex] = N-16;
 	   Product[ex] = X[ex] * Y[ex];
-	   sum_mean = sum_mean + Product[ex];	    
-    }
-   outfile<<"Product  ";
-   for(int i = 0; i < 1000; i++)
-   {
-       outfile << Product[i] <<" ";
-       if(i == 249)
-          outfile << endl;
-       if(i == 499)
-          outfile << endl;
-       if(i==749)
-          outfile << endl;
-
+	   sum_mean = sum_mean + Product[ex];
    }
-   outfile << endl;
-   mean = float(sum_mean) / float(1000);
-   outfile << "The sum of mean is:  ";
-   outfile << sum_mean <<"   ";
-   outfile << endl;
-   outfile << "--------------------------------------------------------";
-   outfile << "The average value is:  "; 
-   outfile < <mean << " ";
-
-   cout << "The sum of mean is:  ";
-   cout << sum_mean << "   ";
-   cout << endl;
-
-   cout << "The average value is:  "; 
-   cout << mean << " ";
-   system("pause");
-   return 0;
+	outfile<<"Product  ";	
+        for(int i = 0; i < 1000; i++)
+       {
+		outfile << Product[i] <<" ";
+		if(i == 249)
+			outfile << endl;
+		if(i == 499)
+			outfile << endl;
+		if(i==749)
+			outfile << endl;
+       }
+	outfile << endl;
+	mean = float(sum_mean) / float(1000);
+	outfile << "The sum of mean is:  ";
+        outfile << sum_mean <<"   ";
+        outfile << endl;
+        outfile << "--------------------------------------------------------";
+        outfile << "The average value is:  "; 
+        outfile < <mean << " ";
+        cout << "The sum of mean is:  ";
+        cout << sum_mean << "   ";
+        cout << endl;
+        cout << "The average value is:  "; 
+        cout << mean << " ";
+        system("pause");
+        return 0;
 }
 
 
