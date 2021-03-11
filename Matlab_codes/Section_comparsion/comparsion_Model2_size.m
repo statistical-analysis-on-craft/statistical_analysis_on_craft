@@ -1,0 +1,11 @@
+clear;
+N=2^58;
+syms x;
+R=@(x)(exp(-(x-2*N*2^(-54)).^2/(64)))/(sqrt(64*pi));
+W=@(x)(exp(-(x-2*N*2^(-56)).^2/(16)))/(4*sqrt(pi));
+P=integral(R,0,16.4556);
+Q=integral(W,16.4556,inf);
+S=P+Q;
+fprintf('P = %d\n',P);
+fprintf('Q = %d\n',Q);
+fprintf('SUM = %d\n',S);
