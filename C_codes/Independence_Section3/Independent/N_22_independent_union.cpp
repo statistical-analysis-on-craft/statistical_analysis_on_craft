@@ -127,13 +127,12 @@ int main()
     double PS[2][12] = {0};
     double PS_union[12][12] = {0};
     double PS_inde_union[12][12] = {0};
-    int Diff[16] =
-    {
-        0x0, 0xa, 0x0, 0x0,
-        0x0, 0x0, 0x0, 0x0,
-        0x0, 0x0, 0xa, 0x0,
-        0x0, 0x0, 0xa, 0x0
-    };
+    int Diff[16] = {
+	    0x0, 0xa, 0x0, 0x0,
+	    0x0, 0x0, 0x0, 0x0,
+	    0x0, 0x0, 0xa, 0x0,
+	    0x0, 0x0, 0xa, 0x0};
+	
     int R0 = 6;              /* Number of rounds */
     double d = pow(2, 22);  /* Number of pairs */
     mt19937_64 mt_rand(time(0));
@@ -215,7 +214,7 @@ int main()
 	   outfile << sum[0][i] <<"   ";
    }
    outfile << endl;
-   outfile << "---------------------------------------------------------------"<<endl;
+   outfile << "---------------------------------------------------------------" << endl;
    outfile << endl;
    outfile << "T2  ";
    for(int i = 0; i < 12; i++)
@@ -236,7 +235,7 @@ int main()
   {
 	   for(int j = 0; j < 12; j++)
 	{
-		   PS[i][j] = float(sum[i][j])/float(10000);
+		   PS[i][j] = float(sum[i][j]) / float(10000);
 	}
 }
    int log_d = log(d)/log(2);
@@ -276,20 +275,20 @@ int main()
    }
    outfile << "T ";
    for(int i = 0; i < 12; i++)
-{
-	  outfile<< T[i]<<" ";
-}
-outfile << endl;
-for(int i = 0; i < 12; i++)
-{
-	outfile << T[i] << " ";
-	for(int j = 0; j < 12; j++)
-	{
+   {
+	  outfile << T[i] << " ";
+   }
+   outfile << endl;
+   for(int i = 0; i < 12; i++)
+   {
+	   outfile << T[i] << " ";
+	   for(int j = 0; j < 12; j++)
+	   {
 		outfile << sum_union[i][j] << "  ";
-	}
-	outfile << endl;
-}
-	outfile << "---------------------------------------------------------------"<<endl;
+	   }
+	   outfile << endl;
+   }
+	outfile << "---------------------------------------------------------------" << endl;
 	for(int i = 0;i < 12; i++)
 	{
 		for(int j = 0; j < 12; j++)
@@ -300,7 +299,7 @@ for(int i = 0; i < 12; i++)
 	outfile << "T ";
 	for(int i = 0; i < 12; i++)
 	{
-		outfile<< T[i]<<" ";
+		outfile << T[i] << " ";
 	}
 	outfile << endl;
 	for(int i = 0; i < 12;i++)
@@ -312,12 +311,12 @@ for(int i = 0; i < 12; i++)
 		}
 		outfile << endl;
 	}
-	outfile << "---------------------------------------------------------------"<<endl;
+	outfile << "---------------------------------------------------------------" << endl;
         outfile << endl;
         outfile << "T ";
-	for(int i=0; i < 12; i++)
+	for(int i = 0; i < 12; i++)
 	{
-		outfile<< T[i]<<" ";
+		outfile<< T[i] << " ";
 	}
 	outfile << endl;
 	for(int i=0;i < 12; i++)
