@@ -95,10 +95,6 @@ int Last_round(int Stt[16], int r)
 
 	return 0;
 }
-
-
-
-
 int Test_Condition_ciphertext(int C0[16], int C1[16])
 {
     for (int i = 0; i < 16; i++)
@@ -115,25 +111,22 @@ int Test_Condition_ciphertext(int C0[16], int C1[16])
 		 return 0;
 	 }
 }
-
-
 int main()
 {
-	ofstream outfile;
-	outfile.open("N_22_independent_union.txt");
+    ofstream outfile;
+    outfile.open("N_22_independent_union.txt");
     int Key[2][16];
     int Tweak[16];
     int P1[16];
     int P0[16];
     double counter[16];
-	int M,N;
-	int T[12]={9,10,11,12,13,14,15,16,17,18,19,20};
-	int sum[2][12]={0};
-	int sum_union[12][12]={0};
-	double PS[2][12]={0};
-	double PS_union[12][12]={0};
-	double PS_inde_union[12][12]={0};
-
+    int M,N;
+    int T[12]={9,10,11,12,13,14,15,16,17,18,19,20};
+    int sum[2][12]={0};
+    int sum_union[12][12]={0};
+    double PS[2][12]={0};
+    double PS_union[12][12]={0};
+    double PS_inde_union[12][12]={0};
     int Diff[16] =
     {
         0x0, 0xa, 0x0, 0x0,
@@ -144,176 +137,137 @@ int main()
 
     int R0 = 6;              /* Number of rounds */
     double d = pow(2, 22);  /* Number of pairs */
-
     mt19937_64 mt_rand(time(0));
-
-   for (int ex=0; ex<10000; ex++)
+    for (int ex=0; ex<10000; ex++)
     {
-		outfile<<"This is the "<<ex+1<<" experiment"<<endl;
-		cout<<"This is the "<<ex+1<<" experiment"<<endl;
+	outfile<<"This is the "<<ex+1<<" experiment"<<endl;
+	cout<<"This is the "<<ex+1<<" experiment"<<endl;
         for (int i = 0; i < 16; i++)
             counter[i] = 0;
-        //outfile << "Number of pairs : " ;
-        //outfile << "2^22" << endl ;
-
-        //outfile << "Round : " ;
-        //outfile << R0 <<endl;
-
-        //outfile << "Key: ";
-
         for (int i = 0; i < 16; i++)
         {
             Key[0][i] = mt_rand()%16;
-            //outfile << hex << Key[0][i];
         }
 
         for (int i = 0; i < 16; i++)
         {
             Key[1][i] = mt_rand()%16;
-            //outfile << hex << Key[1][i];
         }
 
         outfile << endl;
-        //outfile << "The actual value of Key[1][12] is : " << Key[1][12] << endl;
         outfile << endl;
-
-            //outfile << "The value of counter :" << endl;
-
-            /* guess the value of  the tweak cell*/
-            for(int guess = 0; guess < 16; guess++)
+        for(int guess = 0; guess < 16; guess++)
+        {
+            for (double data = 0; data < d; data++)
             {
-                for (double data = 0; data < d; data++)
+                for (int i = 0; i < 16; i++)
+                     P0[i] = mt_rand()%16;
+                for (int i = 0; i < 16; i++)
+                     P1[i] = P0[i] ^ Diff[i];
+                for (int i = 0; i < 16; i++)
+                     Tweak[i] = mt_rand()%16;
+                Tweak[6] = guess; 
+		Tweak[12] = guess;
+                Initialize_key(Key, Tweak);
+                for (int r = 0; r < R0; r++)
+                     Round(P0, r);
+                for (int r = 0; r < R0; r++)
+                     Round(P1, r);
+                if (Test_Condition_ciphertext(P0, P1))
                 {
-                    for (int i = 0; i < 16; i++)
-                        P0[i] = mt_rand()%16;
-
-                    for (int i = 0; i < 16; i++)
-                        P1[i] = P0[i] ^ Diff[i];
-
-
-                    for (int i = 0; i < 16; i++)
-                        Tweak[i] = mt_rand()%16;
-
-                    Tweak[6] = guess; Tweak[12] = guess;
-
-                    Initialize_key(Key, Tweak);
-
-                    for (int r = 0; r < R0; r++)
-                        Round(P0, r);
-
-                    for (int r = 0; r < R0; r++)
-                        Round(P1, r);
-
-                    if (Test_Condition_ciphertext(P0, P1))
-                    {
-                        counter[guess] = counter[guess] + 1;
-                    }
+                     counter[guess] = counter[guess] + 1;
+                }
 
                 }
-				/*outfile << "The counter corresponding to the guessed key value - " << guess << " : "
-                        << "Get " <<dec<<counter[guess]<< " correct pairs"  <<  endl;*/
             }
-			M=counter[Key[1][12]];
-		    N=counter[Key[1][12]^0xa];
-			outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
+		M=counter[Key[1][12]];
+		N=counter[Key[1][12]^0xa];
+		outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
                         << "Get " <<M<< " correct pairs"  <<  endl;
-			outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
+		outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
                         << "Get " <<N<< " correct pairs"  <<  endl;
-			cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
+		cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
                         << "Get " <<M<< " correct pairs"  <<  endl;
-			cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
+		cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
                         << "Get " <<N<< " correct pairs"  <<  endl;
-			cout<<endl;
-			for(int i=0;i<12;i++)
+		cout<<endl;
+		for(int i=0;i<12;i++)
 		 {
-			if(M==T[i])
-	          sum[0][i]=sum[0][i]+1;
-			if(N==T[i])
-	          sum[1][i]=sum[1][i]+1;
+		    if(M==T[i])
+	            sum[0][i]=sum[0][i]+1;
+		    if(N==T[i])
+	            sum[1][i]=sum[1][i]+1;
 		  }
-			for(int i=0;i<12;i++)
-			{
-				for(int j=0;j<12;j++)
-				{
-					if(M==T[i]&&N==T[j])
-						sum_union[i][j]=sum_union[i][j]+1;
-
-				}
-			}
-			
-
+		 for(int i=0;i<12;i++)
+		 {
+		    for(int j=0;j<12;j++)
+		    {
+		        if(M==T[i]&&N==T[j])
+			   sum_union[i][j]=sum_union[i][j]+1;
+		     }
+		  }
     }
    outfile<<"T1  ";
    for(int i=0;i<12;i++)
    {
 	   outfile<<T[i]<<" ";
-
    }
    outfile<<endl;
    outfile<<"sum2  ";
    for(int i=0;i<12;i++)
    {
 	   outfile<<sum[0][i]<<"   ";
-
    }
    outfile<<endl;
    outfile << "---------------------------------------------------------------"<<endl;
    outfile<<endl;
-
    outfile<<"T2  ";
    for(int i=0;i<12;i++)
    {
-	   outfile<<T[i]<<" ";
-
+       outfile<<T[i]<<" ";
    }
    outfile<<endl;
    outfile<<"sum2  ";
    for(int i=0;i<12;i++)
    {
-	   outfile<<sum[1][i]<<"   ";
+       outfile<<sum[1][i]<<"   ";
 
    }
    outfile<<endl;
    outfile << "---------------------------------------------------------------"<<endl;
    outfile<<endl;
-   
-		   for(int i=0;i<2;i++)
-		   {
-			   for(int j=0;j<12;j++)
-			   {
-				   PS[i][j]=float(sum[i][j])/float(10000);
-			   }
-		   }
-			int log_d=log(d)/log(2);
-		    outfile<<"T1  ";
+   for(int i=0;i<2;i++)
+  {
+	   for(int j=0;j<12;j++)
+	{
+		   PS[i][j]=float(sum[i][j])/float(10000);
+	}
+}
+   int log_d=log(d)/log(2);
+   outfile<<"T1  ";
    for(int i=0;i<12;i++)
    {
 	   outfile<<T[i]<<" ";
-
    }
    outfile<<endl;
    outfile<<"PS1  ";
    for(int i=0;i<12;i++)
    {
 	   outfile<<PS[0][i]<<"   ";
-
    }
    outfile<<endl;
    outfile << "---------------------------------------------------------------"<<endl;
    outfile<<endl;
-
    outfile<<"T2  ";
    for(int i=0;i<12;i++)
    {
 	   outfile<<T[i]<<" ";
-
    }
    outfile<<endl;
    outfile<<"PS2  ";
    for(int i=0;i<12;i++)
    {
 	   outfile<<PS[1][i]<<"   ";
-
    }
    outfile<<endl;
    outfile<<endl;
@@ -324,77 +278,63 @@ int main()
 		   PS_inde_union[i][j]=PS[0][i]*PS[1][j];
 	   }
    }
-
-
    outfile<<"T ";
-			for(int i=0;i<12;i++)
-			{
-				outfile<< T[i]<<" ";
-			}
-			outfile << endl;
-			for(int i=0;i<12;i++)
-			{
-				outfile<<T[i]<<" ";
-					for(int j=0;j<12;j++)
-					{
-						outfile<<sum_union[i][j]<<"  ";
-						
-					}
-					outfile<<endl;
-			}
-	    
-
-		   outfile << "---------------------------------------------------------------"<<endl;
-
-		   for(int i=0;i<12;i++)
-			{
-				for(int j=0;j<12;j++)
-				{
-					PS_union[i][j]=float(sum_union[i][j])/float(10000);
-
-				}
-			}
- 
-			outfile<<"T ";
-			for(int i=0;i<12;i++)
-			{
-				outfile<< T[i]<<" ";
-			}
-			outfile << endl;
-			for(int i=0;i<12;i++)
-			{
-				outfile<<T[i]<<" ";
-					for(int j=0;j<12;j++)
-					{
-						outfile<<PS_union[i][j]<<"  ";
-						
-					}
-					outfile<<endl;
-			}
-
-			outfile << "---------------------------------------------------------------"<<endl;
-			outfile<<endl;
-
-			outfile<<"T ";
-			for(int i=0;i<12;i++)
-			{
-				outfile<< T[i]<<" ";
-			}
-			outfile << endl;
-			for(int i=0;i<12;i++)
-			{
-				outfile<<T[i]<<" ";
-					for(int j=0;j<12;j++)
-					{
-						outfile<<PS_inde_union[i][j]<<"  ";
-						
-					}
-					outfile<<endl;
-			}
-
+   for(int i=0;i<12;i++)
+{
+	  outfile<< T[i]<<" ";
+}
+outfile << endl;
+for(int i=0;i<12;i++)
+{
+	outfile<<T[i]<<" ";
+	for(int j=0;j<12;j++)
+	{
+		outfile<<sum_union[i][j]<<"  ";
+	}
+	outfile<<endl;
+}
+	outfile << "---------------------------------------------------------------"<<endl;
+	for(int i=0;i<12;i++)
+	{
+		for(int j=0;j<12;j++)
+		{
+			PS_union[i][j]=float(sum_union[i][j])/float(10000);
+		}
+	}
+	outfile<<"T ";
+	for(int i=0;i<12;i++)
+	{
+		outfile<< T[i]<<" ";
+	}
+	outfile << endl;
+	for(int i=0;i<12;i++)
+	{
+		outfile<<T[i]<<" ";
+		for(int j=0;j<12;j++)
+		{
+			outfile<<PS_union[i][j]<<"  ";
+		}
+		outfile<<endl;
+	}
+	outfile << "---------------------------------------------------------------"<<endl;
+        outfile<<endl;
+        outfile<<"T ";
+	for(int i=0;i<12;i++)
+	{
+		outfile<< T[i]<<" ";
+	}
+	outfile << endl;
+	for(int i=0;i<12;i++)
+	{
+		outfile<<T[i]<<" ";
+		for(int j=0;j<12;j++)
+		{
+			outfile<<PS_inde_union[i][j]<<"  ";
+		}
+	        outfile<<endl;
+	}
 	system("pause");
-
-    return 0;
+	return 0;
 }
 
 
