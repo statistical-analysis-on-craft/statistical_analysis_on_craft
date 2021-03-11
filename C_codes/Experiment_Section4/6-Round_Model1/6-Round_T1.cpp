@@ -119,13 +119,11 @@ int main()
         double PS;
         int T1 = 4, T2 = 8, T3 = 12, T4 = 16;
         int sum = 0;
-        int Diff[16] =
-       {
+        int Diff[16] = {		
 		0x0, 0xa, 0x0, 0x0,
                 0x0, 0x0, 0x0, 0x0,
                 0x0, 0x0, 0xa, 0x0,
-                0x0, 0x0, 0xa, 0x0
-	};
+                0x0, 0x0, 0xa, 0x0 };
 	int R0 = 6;              /* Number of rounds */
 	double d = pow(2, 21);  /* Number of pairs */
 	mt19937_64 mt_rand(time(0));
@@ -141,7 +139,7 @@ int main()
                 cout << "Key: ";
                 for (int i = 0; i < 16; i++)
 		{
-			Key[0][i] = mt_rand()%16;
+			Key[0][i] = mt_rand() % 16;
 			cout << hex << Key[0][i];
 		}
 
@@ -192,11 +190,11 @@ int main()
 		}
 		cout<<"sum: "<< sum << endl;
 	}
-	PS = float(sum)/float(100);
-	int log_d = log(d)/log(2);
-	cout << "When data complexity N=2^" <<log_d<< " and the threshold T="<<T1
+	PS = float(sum) / float(100);
+	int log_d = log(d) / log(2);
+	cout << "When data complexity N=2^" <<log_d<< " and the threshold T=" << T1
                 << ",   Get success probability is: " << PS << endl;
-	cout << "---------------------------------------------------------------"<<endl;
+	cout << "---------------------------------------------------------------" << endl;
 	cout << endl;
         system("pause");
 	return 0;
