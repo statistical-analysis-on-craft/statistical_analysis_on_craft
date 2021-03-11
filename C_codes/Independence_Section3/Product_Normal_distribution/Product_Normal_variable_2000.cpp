@@ -103,14 +103,15 @@ int Test_Condition_ciphertext(int C0[16], int C1[16])
 
      if (Diff_Out[ 0] == 0x0 && Diff_Out[ 1] == 0xa && Diff_Out[ 2] == 0x0 && Diff_Out[ 3] == 0x0 &&
          Diff_Out[ 4] == 0x0 && Diff_Out[ 5] == 0x0 && Diff_Out[ 7] == 0x0 && Diff_Out[ 8] == 0x0 && 
-		 Diff_Out[ 9] == 0x0 && Diff_Out[11] == 0x0 && Diff_Out[12] == 0x0 && Diff_Out[13] == 0x0 && 
-		 Diff_Out[15] == 0x0)
+	 Diff_Out[ 9] == 0x0 && Diff_Out[11] == 0x0 && Diff_Out[12] == 0x0 && Diff_Out[13] == 0x0 && 
+	 Diff_Out[15] == 0x0)
      {
           return 1;
      }
-     else {
-		 return 0;
-	 }
+     else 
+     {
+	  return 0;
+     }
 }
 int main()
 {
@@ -121,11 +122,11 @@ int main()
     int P1[16];
     int P0[16];
     double counter[16];
-    int M,N;
-    int X[2000],Y[2000],Product[2000];
-    int sum_mean=0;
-    int sum_variance=0;
-    double mean,variance;
+    int M, N;
+    int X[2000], Y[2000], Product[2000];
+    int sum_mean = 0;
+    int sum_variance = 0;
+    double mean, variance;
 
     int Diff[16] =
     {
@@ -138,22 +139,20 @@ int main()
     int R0 = 6;              /* Number of rounds */
     double d = pow(2, 22);  /* Number of pairs */
     mt19937_64 mt_rand(time(0));
-    for (int ex=0; ex<2000; ex++)
+    for (int ex = 0; ex < 2000; ex++)
     {
-	outfile<<"This is the "<<ex+1<<" experiment"<<endl;
-	cout<<"This is the "<<ex+1<<" experiment"<<endl;
+	outfile << "This is the " << ex+1 << " experiment" << endl;
+	cout << "This is the " << ex+1 << " experiment" << endl;
         for (int i = 0; i < 16; i++)
             counter[i] = 0;
         for (int i = 0; i < 16; i++)
         {
             Key[0][i] = mt_rand()%16;
         }
-
         for (int i = 0; i < 16; i++)
         {
             Key[1][i] = mt_rand()%16;
         }
-
         outfile << endl;
         outfile << endl;
         /* guess the value of  the tweak cell*/
@@ -181,21 +180,21 @@ int main()
 
              }
          }
-		M = counter[Key[1][12]];
-		N = counter[Key[1][12]^0xa];
-		outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                        << "Get " <<M<< " correct pairs"  <<  endl;
-		outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <" : "
-                        << "Get " <<N<< " correct pairs"  <<  endl;
-		cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                        << "Get " <<M<< " correct pairs"  <<  endl;
-		cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
-                        << "Get " <<N<< " correct pairs"  <<  endl;
-		cout << endl;
-		X[ex] = M-16;
-		Y[ex] = N-16;
-		Product[ex] = X[ex] * Y[ex];
-		sum_mean = sum_mean + Product[ex];
+	    M = counter[Key[1][12]];
+	    N = counter[Key[1][12]^0xa];
+	    outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
+                        << "Get " << M << " correct pairs"  <<  endl;
+	    outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <" : "
+                        << "Get " << N << " correct pairs"  <<  endl;
+	    cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
+                        << "Get " << M << " correct pairs"  <<  endl;
+	    cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
+                        << "Get " << N << " correct pairs"  <<  endl;
+	    cout << endl;
+	    X[ex] = M-16;
+	    Y[ex] = N-16;
+	    Product[ex] = X[ex] * Y[ex];
+	    sum_mean = sum_mean + Product[ex];
     }
    outfile << "Product  ";
    for(int i = 0; i < 2000; i++)
