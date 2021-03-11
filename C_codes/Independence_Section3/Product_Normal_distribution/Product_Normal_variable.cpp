@@ -1,4 +1,4 @@
-// Independence.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// Independence.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 //#include "stdafx.h"
 #include <stdio.h>
@@ -96,10 +96,6 @@ int Last_round(int Stt[16], int r)
 
 	return 0;
 }
-
-
-
-
 int Test_Condition_ciphertext(int C0[16], int C1[16])
 {
     for (int i = 0; i < 16; i++)
@@ -116,23 +112,20 @@ int Test_Condition_ciphertext(int C0[16], int C1[16])
 		 return 0;
 	 }
 }
-
-
 int main()
 {
-	ofstream outfile;
-	outfile.open("Product_normal_variable_2.txt");
+    ofstream outfile;
+    outfile.open("Product_normal_variable_2.txt");
     int Key[2][16];
     int Tweak[16];
     int P1[16];
     int P0[16];
     double counter[16];
-	int M,N;
-	int X[1000],Y[1000],Product[1000];
-	int sum_mean=0;
-	int sum_variance=0;
-	double mean,variance;
-
+    int M,N;
+    int X[1000],Y[1000],Product[1000];
+    int sum_mean=0;
+    int sum_variance=0;
+    double mean,variance;
     int Diff[16] =
     {
         0x0, 0xa, 0x0, 0x0,
@@ -148,113 +141,96 @@ int main()
 
    for (int ex=0; ex<1000; ex++)
     {
-		outfile<<"This is the "<<ex+1<<" experiment"<<endl;
-		cout<<"This is the "<<ex+1<<" experiment"<<endl;
+	outfile<<"This is the "<<ex+1<<" experiment"<<endl;
+	cout<<"This is the "<<ex+1<<" experiment"<<endl;
         for (int i = 0; i < 16; i++)
             counter[i] = 0;
-        //outfile << "Number of pairs : " ;
-        //outfile << "2^22" << endl ;
-
-        //outfile << "Round : " ;
-        //outfile << R0 <<endl;
-
-        //outfile << "Key: ";
-
         for (int i = 0; i < 16; i++)
         {
             Key[0][i] = mt_rand()%16;
-            //outfile << hex << Key[0][i];
         }
 
         for (int i = 0; i < 16; i++)
         {
             Key[1][i] = mt_rand()%16;
-            //outfile << hex << Key[1][i];
         }
 
         outfile << endl;
-        //outfile << "The actual value of Key[1][12] is : " << Key[1][12] << endl;
         outfile << endl;
 
-            //outfile << "The value of counter :" << endl;
-
-            /* guess the value of  the tweak cell*/
-            for(int guess = 0; guess < 16; guess++)
+        for(int guess = 0; guess < 16; guess++)
+        {
+            for (double data = 0; data < d; data++)
             {
-                for (double data = 0; data < d; data++)
-                {
-                    for (int i = 0; i < 16; i++)
-                        P0[i] = mt_rand()%16;
+                 for (int i = 0; i < 16; i++)
+                      P0[i] = mt_rand()%16;
 
-                    for (int i = 0; i < 16; i++)
-                        P1[i] = P0[i] ^ Diff[i];
+                 for (int i = 0; i < 16; i++)
+                      P1[i] = P0[i] ^ Diff[i];
 
+                 for (int i = 0; i < 16; i++)
+                     Tweak[i] = mt_rand()%16;
 
-                    for (int i = 0; i < 16; i++)
-                        Tweak[i] = mt_rand()%16;
+                 Tweak[6] = guess; Tweak[12] = guess;
 
-                    Tweak[6] = guess; Tweak[12] = guess;
+                 Initialize_key(Key, Tweak);
 
-                    Initialize_key(Key, Tweak);
+                 for (int r = 0; r < R0; r++)
+                     Round(P0, r);
 
-                    for (int r = 0; r < R0; r++)
-                        Round(P0, r);
+                 for (int r = 0; r < R0; r++)
+                     Round(P1, r);
 
-                    for (int r = 0; r < R0; r++)
-                        Round(P1, r);
+                 if (Test_Condition_ciphertext(P0, P1))
+                 {
+                     counter[guess] = counter[guess] + 1;
+                 }
 
-                    if (Test_Condition_ciphertext(P0, P1))
-                    {
-                        counter[guess] = counter[guess] + 1;
-                    }
-
-                }
-				/*outfile << "The counter corresponding to the guessed key value - " << guess << " : "
-                        << "Get " <<dec<<counter[guess]<< " correct pairs"  <<  endl;*/
-            }
-			M=counter[Key[1][12]];
-		    N=counter[Key[1][12]^0xa];
-			outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                        << "Get " <<M<< " correct pairs"  <<  endl;
-			outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
-                        << "Get " <<N<< " correct pairs"  <<  endl;
-			cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                        << "Get " <<M<< " correct pairs"  <<  endl;
-			cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
-                        << "Get " <<N<< " correct pairs"  <<  endl;
-			cout<<endl;
-			X[ex]=M-16;
-			Y[ex]=N-16;
-			Product[ex]=X[ex]*Y[ex];
-			sum_mean=sum_mean+Product[ex];
+             }
+         }
+	            M = counter[Key[1][12]];
+		    N = counter[Key[1][12]^0xa];
+		    outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
+                    << "Get " <<M<< " correct pairs"  <<  endl;
+	            outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
+                    << "Get " <<N<< " correct pairs"  <<  endl;
+	            cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
+                    << "Get " <<M<< " correct pairs"  <<  endl;
+		    cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
+                    << "Get " <<N<< " correct pairs"  <<  endl;
+		    cout << endl;
+		    X[ex] = M-16;
+		    Y[ex] = N-16;
+		    Product[ex] = X[ex] * Y[ex];
+		    sum_mean = sum_mean + Product[ex];
     }
    outfile<<"Product  ";
-   for(int i=0;i<1000;i++)
+   for(int i = 0; i < 1000; i++)
    {
-	   outfile<<Product[i]<<" ";
-	   if(i==249)
-		   outfile<<endl;
-	   if(i==499)
-		   outfile<<endl;
-	   if(i==749)
-		   outfile<<endl;
+       outfile << Product[i] <<" ";
+       if(i == 249)
+          outfile << endl;
+       if(i == 499)
+          outfile << endl;
+       if(i==749)
+          outfile << endl;
 
    }
-   outfile<<endl;
-   mean=float(sum_mean)/float(1000);
-   outfile<<"The sum of mean is:  ";
-   outfile<<sum_mean<<"   ";
-   outfile<<endl;
-   outfile<<"--------------------------------------------------------";
-   outfile<<"The average value is:  "; 
-   outfile<<mean<<" ";
+   outfile << endl;
+   mean = float(sum_mean) / float(1000);
+   outfile << "The sum of mean is:  ";
+   outfile << sum_mean <<"   ";
+   outfile << endl;
+   outfile << "--------------------------------------------------------";
+   outfile << "The average value is:  "; 
+   outfile < <mean << " ";
 
-   cout<<"The sum of mean is:  ";
-   cout<<sum_mean<<"   ";
-   cout<<endl;
+   cout << "The sum of mean is:  ";
+   cout << sum_mean << "   ";
+   cout << endl;
 
-   cout<<"The average value is:  "; 
-   cout<<mean<<" ";
+   cout << "The average value is:  "; 
+   cout << mean << " ";
 
 	system("pause");
 
