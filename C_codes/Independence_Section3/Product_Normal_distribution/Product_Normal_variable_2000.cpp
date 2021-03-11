@@ -125,14 +125,12 @@ int main()
     int sum_variance = 0;
     double mean, variance;
 
-    int Diff[16] =
-    {
-        0x0, 0xa, 0x0, 0x0,
-        0x0, 0x0, 0x0, 0x0,
-        0x0, 0x0, 0xa, 0x0,
-        0x0, 0x0, 0xa, 0x0
-    };
-
+    int Diff[16] = {        
+	    0x0, 0xa, 0x0, 0x0,
+            0x0, 0x0, 0x0, 0x0,
+            0x0, 0x0, 0xa, 0x0,
+            0x0, 0x0, 0xa, 0x0 };
+	
     int R0 = 6;              /* Number of rounds */
     double d = pow(2, 22);  /* Number of pairs */
     mt19937_64 mt_rand(time(0));
@@ -163,9 +161,11 @@ int main()
                      P1[i] = P0[i] ^ Diff[i];
                  for (int i = 0; i < 16; i++)
                      Tweak[i] = mt_rand()%16;
+		    
                  Tweak[6] = guess; 
 		 Tweak[12] = guess;
                  Initialize_key(Key, Tweak);
+		    
                  for (int r = 0; r < R0; r++)
                      Round(P0, r);
                  for (int r = 0; r < R0; r++)
@@ -205,7 +205,7 @@ int main()
 	  outfile << endl;
    }
    outfile << endl;
-   mean = float(sum_mean)/float(2000);
+   mean = float(sum_mean) / float(2000);
    outfile << "The sum of mean is:  ";
    outfile << sum_mean << "   ";
    outfile << endl;
