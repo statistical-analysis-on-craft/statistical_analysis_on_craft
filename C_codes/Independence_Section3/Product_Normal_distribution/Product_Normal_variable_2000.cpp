@@ -45,8 +45,6 @@ void Initialize_key(int Key[2][16], int Tweak[16]){
         TK[3][i] = Key[1][i] ^ Tweak[Q[i]];
     }
 }
-
-
 int Round(int Stt[16], int r)
 {
     /* MC */
@@ -62,8 +60,7 @@ int Round(int Stt[16], int r)
     /* Add tweakey */
     for (int i = 0; i < 16; i++)
         Stt[i] ^= TK[r%4][i];
-
-
+	
     int Temp[16];
 
     /* PN */
@@ -200,11 +197,11 @@ int main()
    for(int i = 0; i < 2000; i++)
    {
        outfile << Product[i] << " ";
-       if(i==499)
+       if(i == 499)
 	  outfile << endl;
-       if(i==999)
+       if(i == 999)
 	  outfile << endl;
-       if(i==1549)
+       if(i == 1549)
 	  outfile << endl;
    }
    outfile << endl;
