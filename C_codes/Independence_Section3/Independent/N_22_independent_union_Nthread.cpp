@@ -116,13 +116,12 @@ int main()
 {
 	ofstream outfile;
 	outfile.open("N_22_independent_union_Nthread.txt");
-	int Diff[16] =
-	{
-		0x0, 0xa, 0x0, 0x0,
+	int Diff[16] = {
+		0x0, 0xa, 0x0, 0x0,	
                 0x0, 0x0, 0x0, 0x0,
                 0x0, 0x0, 0xa, 0x0,
-                0x0, 0x0, 0xa, 0x0
-        };
+                0x0, 0x0, 0xa, 0x0};
+	
         int R0 = 6;              /* Number of rounds */
         double d = pow(2, 22);  /* Number of pairs */
         mt19937_64 mt_rand(time(0));
@@ -175,8 +174,10 @@ int main()
 					Tweak[6] = guess; Tweak[12] = guess;
 					Initialize_key(Key, Tweak);
 					for (int r = 0; r < R0; r++)
+					{
 						Round(P0, r);
-					Round(P1, r);
+					        Round(P1, r);
+					}
 					if (Test_Condition_ciphertext(P0, P1))
 					{
 						counter[guess] = counter[guess] + 1;
@@ -186,18 +187,18 @@ int main()
 			M = counter[Key[1][12]];
 			N = counter[Key[1][12]^0xa];
 			outfile << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                        << "Get " <<M<< " correct pairs"  <<  endl;
-			outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
-                        << "Get " <<N<< " correct pairs"  <<  endl;
+                        << "Get " << M << " correct pairs"  <<  endl;
+			outfile << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) << " : "
+                        << "Get " << N << " correct pairs"  <<  endl;
 			cout << "The counter corresponding to the guessed key value - " << Key[1][12] << " : "
-                        << "Get " <<M<< " correct pairs"  <<  endl;
+                        << "Get " << M << " correct pairs"  <<  endl;
 			cout << "The counter corresponding to the guessed key value - " << (Key[1][12]^0xa) <<" : "
-                        << "Get " <<N<< " correct pairs"  <<  endl;
+                        << "Get " << N << " correct pairs"  <<  endl;
 			cout << endl;
 			for(int i = 0; i < 12; i++)
 			{
 				if(M == T[i])
-					sum[0][i] = sum[0][i]+1;
+					sum[0][i] = sum[0][i] + 1;
 				if(N == T[i])
 					sum[1][i] = sum[1][i] + 1;
 		        }
@@ -225,7 +226,7 @@ int main()
 
    }
    outfile << endl;
-   outfile << "---------------------------------------------------------------"<<endl;
+   outfile << "---------------------------------------------------------------" << endl;
    outfile << endl;
    outfile << "T2  ";
    for(int i = 0;i < 12; i++)
@@ -239,7 +240,7 @@ int main()
 	   outfile << sum[1][i] << "   ";
    }
    outfile << endl;
-   outfile << "---------------------------------------------------------------"<<endl;
+   outfile << "---------------------------------------------------------------" << endl;
    outfile << endl;
    for(int i = 0; i < 2; i++)
    {
@@ -261,7 +262,7 @@ int main()
 	   outfile << PS[0][i] << "   ";
    }
    outfile << endl;
-   outfile << "---------------------------------------------------------------"<<endl;
+   outfile << "---------------------------------------------------------------" << endl;
    outfile << endl;
    outfile << "T2  ";
    for(int i = 0; i < 12; i++)
@@ -300,7 +301,7 @@ int main()
 			}
 			outfile << endl;
 		}
-		 outfile << "---------------------------------------------------------------"<<endl;
+		 outfile << "---------------------------------------------------------------" << endl;
 		 for(int i = 0; i < 12; i++)
 		{
 			for(int j = 0; j < 12; j++)
@@ -312,7 +313,7 @@ int main()
 		outfile << "T ";
 		for(int i = 0; i < 12; i++)
 		{
-			outfile<< T[i]<<" ";
+			outfile << T[i] << " ";
 		}
 		outfile << endl;
 		for(int i = 0;i < 12;i++)
@@ -326,7 +327,7 @@ int main()
 				outfile << endl;
 		}
 
-		outfile << "---------------------------------------------------------------"<<endl;
+		outfile << "---------------------------------------------------------------" << endl;
 		outfile << endl;
 		outfile << "T ";
 		for(int i = 0; i < 12; i++)
