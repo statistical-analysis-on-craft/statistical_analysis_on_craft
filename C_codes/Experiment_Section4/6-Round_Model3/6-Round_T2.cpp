@@ -33,7 +33,6 @@ int TK[4][16]; /* TK[0][], TK[1][], TK[2][], TK[3][] */
 int Diff_Out[16];
 
 void Initialize_key(int Key[2][16], int Tweak[16]){
-
     for (int i = 0; i < 16; i++){
         TK[0][i] = Key[0][i] ^ Tweak[i];
         TK[1][i] = Key[1][i] ^ Tweak[i];
@@ -58,8 +57,6 @@ int Round(int Stt[16], int r)
     /* Add tweakey */
     for (int i = 0; i < 16; i++)
         Stt[i] ^= TK[r%4][i];
-
-
     int Temp[16];
 
     /* PN */
@@ -69,8 +66,7 @@ int Round(int Stt[16], int r)
     /* SB */
     for (int i = 0; i < 16; i++)
         Stt[i] = S[Temp[i]];
-
-	return 0;
+    return 0;
 
 }
 
@@ -92,10 +88,6 @@ int Last_round(int Stt[16], int r)
 
 	return 0;
 }
-
-
-
-
 int Test_Condition_ciphertext(int C0[16], int C1[16])
 {
     for (int i = 0; i < 16; i++)
@@ -103,8 +95,8 @@ int Test_Condition_ciphertext(int C0[16], int C1[16])
 
      if (Diff_Out[ 0] == 0x0 && Diff_Out[ 1] == 0xa && Diff_Out[ 2] == 0x0 && Diff_Out[ 3] == 0x0 &&
          Diff_Out[ 4] == 0x0 && Diff_Out[ 5] == 0x0 && Diff_Out[ 7] == 0x0 && Diff_Out[ 8] == 0x0 && 
-		 Diff_Out[ 9] == 0x0 && Diff_Out[11] == 0x0 && Diff_Out[12] == 0x0 && Diff_Out[13] == 0x0 && 
-		 Diff_Out[15] == 0x0)
+	 Diff_Out[ 9] == 0x0 && Diff_Out[11] == 0x0 && Diff_Out[12] == 0x0 && Diff_Out[13] == 0x0 && 
+	 Diff_Out[15] == 0x0)
      {
           return 1;
      }
@@ -112,120 +104,95 @@ int Test_Condition_ciphertext(int C0[16], int C1[16])
 		 return 0;
 	 }
 }
-
-
 int main()
 {
-    int Key[2][16];
-    int Tweak[16];
-    int P1[16];
-    int P0[16];
-    double counter[16];
-	int M,N;
+        int Key[2][16];
+        int Tweak[16];
+        int P1[16];
+        int P0[16];
+        double counter[16];
+	int M, N;
 	double PS;
-	int T1=32,T2=128,T3=288,T4=512;
-	int sum=0;
-
-    int Diff[16] =
-    {
-        0x0, 0xa, 0x0, 0x0,
-        0x0, 0x0, 0x0, 0x0,
-        0x0, 0x0, 0xa, 0x0,
-        0x0, 0x0, 0xa, 0x0
-    };
-
-    int R0 = 6;              /* Number of rounds */
-    double d = pow(2, 24);  /* Number of pairs */
-
-    mt19937_64 mt_rand(time(0));
-
-   for (int ex=0; ex<100; ex++)
-    {
-		cout<<"This this the Model3"<<endl;
-		cout<<"This is the "<<ex+1<<" experiment"<<endl;
-        for (int i = 0; i < 16; i++)
-            counter[i] = 0;
-
-        
-        cout << "Number of pairs : " ;
-        cout << "2^24" << endl ;
-
-        cout << "Round : " ;
-        cout << R0 <<endl;
-
-        cout << "Key: ";
-
-        for (int i = 0; i < 16; i++)
-        {
-            Key[0][i] = mt_rand()%16;
-            cout << hex << Key[0][i];
-        }
-
-        for (int i = 0; i < 16; i++)
-        {
-            Key[1][i] = mt_rand()%16;
-            cout << hex << Key[1][i];
-        }
-
-        cout << endl;
-        cout << "The actual value of Key[1][12] is : " << Key[1][12] << endl;
-        cout << endl;
-
-            cout << "The value of counter :" << endl;
-
-            /* guess the value of  the tweak cell*/
-            for(int guess = 0; guess < 16; guess++)
-            {
-                for (double data = 0; data < d; data++)
+	int T1 = 32, T2 = 128,T3 = 288, T4 = 512;
+	int sum = 0;
+        int Diff[16] = {        
+		0x0, 0xa, 0x0, 0x0,
+                0x0, 0x0, 0x0, 0x0,
+                0x0, 0x0, 0xa, 0x0,
+                0x0, 0x0, 0xa, 0x0 };	
+    
+	int R0 = 6;              /* Number of rounds */
+        double d = pow(2, 24);  /* Number of pairs */
+        mt19937_64 mt_rand(time(0));
+        for (int ex = 0; ex < 100; ex++)
+	{
+		cout << "This this the Model3" << endl;
+		cout << "This is the " << ex+1 <<" experiment" << endl;
+                for (int i = 0; i < 16; i++)
+			counter[i] = 0;
+                cout << "Number of pairs : " ;
+                cout << "2^24" << endl ;
+                cout << "Round : " ;
+                cout << R0 <<endl;
+                cout << "Key: ";
+                for (int i = 0; i < 16; i++)
+		{
+			Key[0][i] = mt_rand()%16;
+			cout << hex << Key[0][i];
+		}
+                for (int i = 0; i < 16; i++)
                 {
-                    for (int i = 0; i < 16; i++)
-                        P0[i] = mt_rand()%16;
-
-                    for (int i = 0; i < 16; i++)
-                        P1[i] = P0[i] ^ Diff[i];
-
-
-                    for (int i = 0; i < 16; i++)
-                        Tweak[i] = mt_rand()%16;
-
-                    Tweak[6] = guess; Tweak[12] = guess;
-
-                    Initialize_key(Key, Tweak);
-
-                    for (int r = 0; r < R0; r++)
-                        Round(P0, r);
-
-                    for (int r = 0; r < R0; r++)
-                        Round(P1, r);
-
-                    if (Test_Condition_ciphertext(P0, P1))
-                    {
-                        counter[guess] = counter[guess] + 1;
-                    }
-
+                        Key[1][i] = mt_rand()%16;
+                        cout << hex << Key[1][i];
                 }
-				cout << "The counter corresponding to the guessed key value - " << guess << " : "
-                        << "Get " <<dec<<counter[guess]<< " correct pairs"  <<  endl;
-            }
-			M=counter[Key[1][12]];
-		    N=counter[Key[1][12]^0xa];
-			cout << "The sum squares of counter corresponding to the guessed key value - " << Key[1][12] << 
-				" and "<<(Key[1][12]^0xa)<<" : "<< "Get " <<(M*M+N*N)<< " correct pairs"  <<  endl;	
-			if((M*M+N*N)>=(T4))
+                cout << endl;
+                cout << "The actual value of Key[1][12] is : " << Key[1][12] << endl;
+                cout << endl;
+                cout << "The value of counter :" << endl;
+                /* guess the value of  the tweak cell*/
+                for(int guess = 0; guess < 16; guess++)
+                {
+			for (double data = 0; data < d; data++)
 			{
-				sum=sum+1;
-			}
-		    cout<<"sum: "<<sum<<endl;
-            cout << "----------------------------"<<endl;
-			cout << endl;
-    }
-   PS=float(sum)/float(100);
-   int log_d=log(d)/log(2);
-   cout << "When data complexity N=2^ " <<log_d<< " and the threshold T="<<T4
-        << ",   Get success probability is: " << PS <<endl;
-	system("pause");
+				for (int i = 0; i < 16; i++)
+					P0[i] = mt_rand()%16;
+                                for (int i = 0; i < 16; i++)
+                                        P1[i] = P0[i] ^ Diff[i];
+                                for (int i = 0; i < 16; i++)
+                                        Tweak[i] = mt_rand()%16;
+                                Tweak[6] = guess; Tweak[12] = guess;
+                                Initialize_key(Key, Tweak);
+                                for (int r = 0; r < R0; r++)
+                                         Round(P0, r);
+                                for (int r = 0; r < R0; r++)
+                                         Round(P1, r);
+                                if (Test_Condition_ciphertext(P0, P1))
+                                {
+                                         counter[guess] = counter[guess] + 1;
+                                }
 
-    return 0;
+                        }
+			cout << "The counter corresponding to the guessed key value - " << guess << " : "
+                        << "Get " << dec << counter[guess] << " correct pairs" << endl;
+		}
+                M = counter[Key[1][12]];
+		N = counter[Key[1][12]^0xa];
+		cout << "The sum squares of counter corresponding to the guessed key value - " << Key[1][12] << 
+			" and " << (Key[1][12]^0xa) << " : " << "Get " << (M * M + N * N) << " correct pairs"  << endl;	
+		if((M * M + N * N) >= (T4))
+		{
+			sum = sum + 1;
+		}
+		cout << "sum: " << sum << endl;
+                cout << "----------------------------" << endl;
+	        cout << endl;
+    }
+   PS = float(sum) / float(100);
+   int log_d = log(d) / log(2);
+   cout << "When data complexity N=2^ " << log_d << " and the threshold T=" << T4
+        << ",   Get success probability is: " << PS << endl;
+   system("pause");
+   return 0;
 }
 
 
