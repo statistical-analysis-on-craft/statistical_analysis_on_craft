@@ -1,0 +1,11 @@
+clear;
+N = 2^22;
+F=@(x)((exp(-(x.^2./2)))./(sqrt(pi.*2)));
+P=1-(integral(F,-inf,(1.7302e-04-N*2^(-18))/(sqrt(N*2^(-18)))))^2;
+Q=1-(integral(F,-inf,(8-N*2^(-18))/(sqrt(N*2^(-18)))))^2;
+O=1-(integral(F,-inf,(12-N*2^(-18))/(sqrt(N*2^(-18)))))^2;
+R=1-(integral(F,-inf,(16-N*2^(-18))/(sqrt(N*2^(-18)))))^2;
+fprintf('P = %d\n',P); 
+fprintf('Q = %d\n',Q);
+fprintf('O = %d\n',O);
+fprintf('R = %d\n',R);
